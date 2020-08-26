@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>online timer</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="./css/bootstrap.min.css">
+        <link rel="stylesheet" href="./css/toastr.css">
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.css">
+        <script src="./js/jquery.min.js"></script>
+        <script src="./js/popper.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+        <script src="./js/toastr.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.min.js"></script>
+    </head>
+    <body>
+        <div>
+            <div class="flex">
+                <h1 class="title">online timer</h1>
+            </div>
+            <div class="container">
+                <div class="tab-pane container active" id="countdowntimer">
+                    <div class="container">
+                        <ul class="nav nav-tabs">
+                            <li class="nav-item">
+                                <a href="#onlinetimer" class="nav-link active" data-toggle="tab">online timers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#multitimer" class="nav-link" data-toggle="tab">multiple timers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#pomodoro" class="nav-link" data-toggle="tab">pomodoro timer</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <i class="fa fa-cog fa-spin" aria-hidden="true"></i>
+                            <div class="audio_option">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4>Duration Alarm</h4>
+                                    </div>
+                                    <div class="col-md-8 btn-group">
+                                        <button class="btn btn-outline-light" onclick="duration_alarmset(2)">2s</button>
+                                        <button class="btn btn-outline-light" onclick="duration_alarmset(5)">5s</button>
+                                        <button class="btn btn-outline-light" onclick="duration_alarmset(10)">10s</button>
+                                        <button class="btn btn-outline-light" onclick="duration_alarmset(15)">15s</button>
+                                        <button class="btn btn-outline-light" onclick="duration_alarmset(1000)">Infinite</button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <h4>Alarm Volume</h4>
+                                    </div>
+                                    <div class="col-md-8 btn-group">
+                                        <div class="col-md-8">
+                                            <input type="range" min="1" max="100" value="30" onchange="audiovolumecontrol()">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <button class="btn btn-outline-light infinite">Set</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane container active" id="onlinetimer">
+                                <hr />
+                                <div class="onlinetimerheader">
+                                    <h3 class="onlinetimer">Online timer</h3>
+                                    <strong class="tip">countdown timer</strong>
+                                </div>
+                                <hr />
+                                <div class="container">
+                                    <div class="ringbell"></div>
+                                    <div class="timer-display">10:00</div>
+                                    <hr />
+                                    <div class="setting">
+                                        <form class="setting-option row">
+                                            <div class="col-md-6">
+                                                <div class="btn btn-outline-light form-control toggle_timer">Start</div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="btn btn-outline-light form-control resetTimer">Reset</div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <hr />
+                                    <div class="row">
+                                        <h5>pre-programmed times</h5>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-outline-light" onclick="optionTimer(30)">30s</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="optionTimer(45)">45s</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="optionTimer(60)">1 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="optionTimer(90)">1 min 30</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="optionTimer(120)">2 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="optionTimer(150)">2 min 30</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="optionTimer(180)">3 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="optionTimer(210)">3 min 30</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="optionTimer(240)">4 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="optionTimer(270)">4 min 30</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="optionTimer(300)">5 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="optionTimer(330)">5 min 30</button>
+                                            </div>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-outline-light" onclick="optionTimer(360)">6 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="optionTimer(420)">7 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="optionTimer(480)">8 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="optionTimer(540)">9 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="optionTimer(600)">10 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="optionTimer(660)">11 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="optionTimer(720)">12 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="optionTimer(780)">13 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="optionTimer(840)">14 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="optionTimer(900)">15 minute</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane container" id="multitimer">
+                                <hr />
+                                <div class="onlinetimerheader">
+                                    <h3 class="onlinetimer">Multiple timer</h3>
+                                    <strong class="tip">countdown timer</strong>
+                                </div>
+                                <hr />
+                                <div class="container">
+                                    <div class="setting">
+                                        <div class="setting-option row" onchange="bug()">
+                                            <div class="col-md-8 input-group">
+                                                <input type="number" name="minute" value="1" id="minutes" class="form-control" dir="rtl" />
+                                                <input type="number" name="second" value="30" id="seconds" class="form-control" dir="rtl" />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="btn btn-outline-light form-control" id="multipletimerStart">Start</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="row" id="multitimeDisplay"></div>
+                                    <br />
+                                    <div class="row">
+                                        <h5>pre-programmed times</h5>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-outline-light" onclick="MuloptionTimer(30)">30s</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="MuloptionTimer(45)">45s</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="MuloptionTimer(60)">1 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="MuloptionTimer(90)">1 min 30</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="MuloptionTimer(120)">2 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="MuloptionTimer(150)">2 min 30</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="MuloptionTimer(180)">3 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="MuloptionTimer(210)">3 min 30</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="MuloptionTimer(240)">4 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="MuloptionTimer(270)">4 min 30</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="MuloptionTimer(300)">5 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="MuloptionTimer(330)">5 min 30</button>
+                                            </div>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-outline-light" onclick="MuloptionTimer(360)">6 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="MuloptionTimer(420)">7 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="MuloptionTimer(480)">8 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="MuloptionTimer(540)">9 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="MuloptionTimer(600)">10 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="MuloptionTimer(660)">11 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="MuloptionTimer(720)">12 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="MuloptionTimer(780)">13 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="MuloptionTimer(840)">14 minute</button>
+                                                <button type="button" class="btn btn-outline-light" onclick="MuloptionTimer(900)">15 minute</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane container" id="pomodoro">
+                                <hr />
+                                <div class="onlinetimerheader">
+                                    <h3 class="onlinetimer">Pomodoro timer</h3>
+                                    <strong class="tip">countdown timer</strong>
+                                </div>
+                                <div class="container">
+                                    <div class="row pomodorotime">
+                                        <div class="col-md-9">
+                                            <input type="text" dir="rtl" name="pomodoro" class="form-control" value="3+1" placeholder="25+25+25+25+25+25">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button class="btn btn-outline-light form-control" id="start">Start a Sequence</button>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <div class="row" id="pomodorotimeDiv"></div>
+                                    <br />
+                                    <div class="row">
+                                        <h5>pre-programmed times</h5>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-outline-light pomoBtn" value="0.5">30s</button>
+                                                <button type="button" class="btn btn-outline-light pomoBtn" value="1">1min</button>
+                                                <button type="button" class="btn btn-outline-light pomoBtn" value="1.5">1 min 30</button>
+                                                <button type="button" class="btn btn-outline-light pomoBtn" value="2">2 minute</button>
+                                                <button type="button" class="btn btn-outline-light pomoBtn" value="2.5">2 min 30</button>
+                                                <button type="button" class="btn btn-outline-light pomoBtn" value="5">5 minute</button>
+                                                <button type="button" class="btn btn-outline-light pomoBtn" value="10">10 minute</button>
+                                                <button type="button" class="btn btn-outline-light pomoBtn" value="5.5">5 min 30</button>
+                                                <button type="button" class="btn btn-outline-light pomoBtn" value="20">20 minute</button>
+                                                <button type="button" class="btn btn-outline-light pomoBtn" value="30.5">30 min 30</button>
+                                                <button type="button" class="btn btn-outline-light pomoBtn" value="45">45 minute</button>
+                                                <button type="button" class="btn btn-outline-light pomoBtn" value="60.5">60 min 30</button>
+                                            </div>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-outline-light pomoBtn" value="1+1+1">1+1+1 mins</button>
+                                                <button type="button" class="btn btn-outline-light pomoBtn" value="20+2">20+2 mins</button>
+                                                <button type="button" class="btn btn-outline-light pomoBtn" value="25+5">25+5 mins</button>
+                                                <button type="button" class="btn btn-outline-light pomoBtn" value="3+7+9+1">3+7+9+1 mins</button>
+                                                <button type="button" class="btn btn-outline-light pomoBtn" value="30+5">30+5 mins</button>
+                                                <button type="button" class="btn btn-outline-light pomoBtn" value="40+5">40+5 mins</button>
+                                                <button type="button" class="btn btn-outline-light pomoBtn" value="50+2+2">50+2+2 mins</button>
+                                                <button type="button" class="btn btn-outline-light pomoBtn" value="9+1">9+1 mins</button>
+                                                <button type="button" class="btn btn-outline-light pomoBtn" value="50+10">50+10 mins</button>
+                                                <button type="button" class="btn btn-outline-light pomoBtn" value="15+2">15+2 mins</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <audio id="doneSound" src="./image/Message_Notification_SetA_v14_v2.mp3">
+    </body>
+    <script src="./js/onlinetime.js"></script>
+    <!-- <script src="./js/onlineFilp.js"></script> -->
+    <script src="./js/multipletime.js"></script>
+    <script src="./js/pomodorotime.js"></script>
+    
+</html>
